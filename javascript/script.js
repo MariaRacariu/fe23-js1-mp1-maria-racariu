@@ -38,6 +38,9 @@ document.body.append(numbersContainer);
 
 numbersContainer.style.border = "2px solid black";
 numbersContainer.style.textAlign = "center";
+numbersContainer.style.display = "flex";
+numbersContainer.style.justifyContent = "space-around";
+numbersContainer.style.alignItems = "center";
 
 const numberArray = [
     "0",
@@ -68,20 +71,68 @@ const numberTextArray = [
 for(let i = 0; i < 3; i++){
     const numberContainerSection = document.createElement("div");
     numbersContainer.append(numberContainerSection);
-    numberContainerSection.style.display = "inline-block";
-    numberContainerSection.style.maxWidth = "500px";
-    
-    if(i == 0 || i == 1){
+    numberContainerSection.style.fontSize = "30px";
+    numberContainerSection.style.backgroundColor = "#A8A8F0";
+    numberContainerSection.style.width = "200px";
+    numberContainerSection.style.padding = "20px";
+
+    if(i == 0){
         for(let y = 0; y < numberArray.length; y++){
             const numberRow = document.createElement("p");
             numberContainerSection.append(numberRow);
             numberRow.innerText = numberArray[y];
+
+            numberRow.style.margin = "0";
+            numberRow.style.padding = "0";
+
+            if(y%2 == 0){
+                numberRow.style.backgroundColor = 'black';
+                numberRow.style.color = "white";
+
+                if(numberArray[y] == "4"){
+                    numberRow.style.backgroundColor = "red";
+                }
+            }else{
+                numberRow.style.backgroundColor = 'white';
+            }
         }
+    }else if(i == 1){
+        const reverseArray = numberArray.reverse();
+        for(let y = 0; y < numberArray.length; y++){
+            const numberRow = document.createElement("p");
+            numberContainerSection.append(numberRow);
+            numberRow.innerText = reverseArray[y];
+
+            numberRow.style.margin = "0";
+            numberRow.style.padding = "0";
+
+            if(y%2 == 0){
+                numberRow.style.backgroundColor = 'white';
+            }else if(reverseArray[y] == "8"){
+                numberRow.style.backgroundColor = "red";
+            }else{
+                numberRow.style.backgroundColor = "black";
+                numberRow.style.color = "white";
+            }
+        }
+
     }else if (i == 2){
         for(let y = 0; y < numberTextArray.length; y++){
             const numberRow = document.createElement("p");
             numberContainerSection.append(numberRow);
             numberRow.innerText = numberTextArray[y];
+
+            numberRow.style.margin = "0";
+            numberRow.style.padding = "0";
+
+            if(y%2 == 0){
+                numberRow.style.backgroundColor = 'black';
+                numberRow.style.color = "white";
+            }else if(numberTextArray[y] == "sex"){
+                numberRow.style.backgroundColor = "red";
+            }else{
+                numberRow.style.backgroundColor = "white";
+            }
         }
     }
 }
